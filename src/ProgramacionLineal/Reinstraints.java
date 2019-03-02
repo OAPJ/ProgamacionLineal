@@ -32,43 +32,66 @@ public class Reinstraints {
         z = z.replace(" ", ""); //Remove to spaces
         //Verificamos que no sea negativo
         if(z.contains("-")) return false;
+        //Verificamos que al inicio tenga numero
+        if(!((z.charAt(0)>47 && z.charAt(0)<58) || z.charAt(0)=='x')) return false;
         //Verificamos que al final no este un signo raro
         if(z.charAt(z.length()-1) != 'y') return false;
         //Validamos que contenga x y y
         if(!z.contains("x") || !z.contains("y")) return false;
         //Validamos que no tenga un caracter extraño
+        int contx=0, conty=0;
         for(int i=0; i<z.length(); i++){
             int aux = z.charAt(i);
-            if(aux == '.' && !(z.charAt(i+1)>47 && z.charAt(i+1)<58))//Verifica que despues del punto tenga un numero
-                return false;
-            if(!((aux>47 && aux<58) || aux==120 || aux==121 || aux==46 || aux=='+'))//Si no es un nuemor, x, y y el .
-                return false;
+            if(aux == 'x') contx++;
+            if(aux == 'y') conty++;
+            if((aux == 'x' && contx>1) || (aux == 'y' && conty>1)) return false; //Verifica si hay más de dos x o y
+            if(aux == '.' && !(z.charAt(i+1)>47 && z.charAt(i+1)<58)) return false; //Verifica que despues del punto tenga un numero
+            if(aux == '+' && !((z.charAt(i+1)>47 && z.charAt(i+1)<58) || z.charAt(i+1)=='y')) return false;//Verifica que despues del + tenga un numero
+            if(!((aux>47 && aux<58) || aux==120 || aux==121 || aux==46 || aux=='+')) return false;//Si no es un nuemor, x, y y el .
         }
+        //Verificar que no tenga más de +
+        String[] a = z.split("\\+");
+        if(a.length != 2) return false;
         return true;
     }
     
-    public boolean evaluarVaribales(String r){
-        //reinstraint = reinstraint.replace(" ", ""); //Remove to spaces
-        //Separamos por saltos de linea
+    public boolean validarRestrinciones(String r){
+        //Quitamos los espacios en blanco
+        r = r.replace(" ", "");
+        //Verificamos que las restriciones no sean negativas
+        if(r.contains("-")) return false;
+        //Separamos las restriciones por \n
         String[] res = r.split("\\\n");
-        //Separamos por + y verificamos que sean solo dos variables
-        
-        //Las agregamos al array
+        for(int i=0; i<res.length; i++){
+            //Verificamos que al inicio tenga numero
+            if(!((res[i].charAt(0)>47 && res[i].charAt(0)<58) || res[i].charAt(0)=='x')) return false;
+            //Verificamos que al final no este un signo raro
+            if(!(res[i].charAt(res[i].length()-1)>47 && res[i].charAt(res[i].length()-1)<58)) return false;
+            //Validamos que todas las restriciones contegan x e y;
+            if(!res[i].contains("x") || !res[i].contains("y")) return false;
+            //Validamos que las restriciones no contegan un caracter extraño
+            int contx=0, conty=0;
+            for(int j=0; j<res[i].length(); j++){
+                int aux = res[i].charAt(j);
+                if(aux == 'x') contx++;
+                if(aux == 'y') conty++;
+                if((aux == 'x' && contx>1) || (aux == 'y' && conty>1)) return false; //Verifica si hay más de dos x o y
+                if(aux == '.' && !(res[i].charAt(j+1)>47 && res[i].charAt(j+1)<58)) return false; //Verifica que despues del punto tenga un numero
+                if(aux == '+' && !((res[i].charAt(j+1)>47 && res[i].charAt(j+1)<58) || res[i].charAt(j+1)=='y')) return false;//Verifica que despues del + tenga un numero
+                if(!((aux>47 && aux<58) || aux==120 || aux==121 || aux=='.' || aux=='+' || aux=='<' || aux=='=')) return false;//Si no es un nuemor, x, y y el .
+            }
+            //Verificar que no tenga más de +
+            String[] a = res[i].split("\\+");
+            if(a.length != 2) return false;
+            a = res[i].split("\\<");
+            if(a.length != 2) return false;
+            a = res[i].split("\\=");
+            if(a.length != 2) return false;
+        }
+        //Guarda las restriciones una vez que son todas validas
         for(int i=0; i<res.length; i++)
             restrinciones.add(res[i]);
         return true;
-    }
-    public boolean evaluateNegatives(){
-        //Verifica que no sean Negatives
-        /*for(int i=0; i<getReinstraintsArray().length; i++)
-            if(getReinstraintsArray()[i].contains("-"))
-                return false;*/
-        return true;
-    }
-    
-    public void separateReintraints(){
-//        reinstraint = reinstraint.replace(" ", ""); //Remove to spaces
-//        reinstraintsArray = getReinstraint().split("\\\n"); //Separe the reintraint for '\n'
     }
     
     public void obtenerValores(String r){
