@@ -31,17 +31,19 @@ public class Reinstraints {
     public boolean validarZ(String z){
         z = z.replace(" ", ""); //Remove to spaces
         //Verificamos que no sea negativo
-        if(z.contains("-"))
-            return false;
+        if(z.contains("-")) return false;
         //Verificamos que al final no este un signo raro
-        //if()
-        //Separamos por +
-        String[] r = z.split("\\+");
-        //Verificamos que el tamaño de z sea 2
-        if(r.length != 2)
-            return false;
-        //Verificamos que x y y esten bien escritos;
-        
+        if(z.charAt(z.length()-1) != 'y') return false;
+        //Validamos que contenga x y y
+        if(!z.contains("x") || !z.contains("y")) return false;
+        //Validamos que no tenga un caracter extraño
+        for(int i=0; i<z.length(); i++){
+            int aux = z.charAt(i);
+            if(aux == '.' && !(z.charAt(i+1)>47 && z.charAt(i+1)<58))//Verifica que despues del punto tenga un numero
+                return false;
+            if(!((aux>47 && aux<58) || aux==120 || aux==121 || aux==46 || aux=='+'))//Si no es un nuemor, x, y y el .
+                return false;
+        }
         return true;
     }
     
