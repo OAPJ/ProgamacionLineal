@@ -6,6 +6,7 @@
 package ProgramacionLineal;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
@@ -13,8 +14,11 @@ import javax.swing.JOptionPane;
  *
  * @author ovall
  */
+//validar que no sean más de dos variables
 public class ProgramacionLineal extends javax.swing.JFrame {
     Graficar grafica = new Graficar();
+    Gauss2X2 gauss;
+    ArrayList<float[]> interseciones;
     private Reinstraints reinstraint;
     /**
      * Creates new form ProgramacionLienal
@@ -24,6 +28,7 @@ public class ProgramacionLineal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(0,0,0));
         jPanel2 = grafica.obtenerGrafica();
+        interseciones =  new ArrayList<>();
     }
 
     /**
@@ -210,19 +215,26 @@ public class ProgramacionLineal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Separate the reinstrainst for a '\n'
-        reinstraint = new Reinstraints(reinstraintsTA.getText());
-        if(reinstraint.evaluateNegatives()){
-            for(int i=0; i<reinstraint.getReinstraintsArray().length; i++)
-                reinstraint.obtenerValores(reinstraint.getReinstraintsArray()[i]);//Obtener los valores
-            reinstraint.obtenerValoresGrafica();
-            for(int i=0; i<reinstraint.getXy().size(); i++)
-                grafica.agregarGrafica(String.valueOf(i+1), reinstraint.getXy().get(i)[0], reinstraint.getXy().get(i)[1]);
-                
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"No se permiten números negativos","Programacion Lineal",JOptionPane.INFORMATION_MESSAGE);
-        }
+//        if(z.getText().equals("") | ){
+//        }
+//Separate the reinstrainst for a '\n'
+//        reinstraint = new Reinstraints(reinstraintsTA.getText());
+//        //Evaluamos que sea positivo
+//        if(reinstraint.evaluateNegatives()){
+//            for(int i=0; i<reinstraint.getReinstraintsArray().length; i++)
+//                reinstraint.obtenerValores(reinstraint.getReinstraintsArray()[i]);//Obtener los valores
+//            //Graficar las ecuaciones
+//            reinstraint.obtenerValoresGrafica();
+//            for(int i=0; i<reinstraint.getXy().size(); i++)
+//                grafica.agregarGrafica(String.valueOf(i+1), reinstraint.getXy().get(i)[0], reinstraint.getXy().get(i)[1]);
+//            //Optener las interceciones
+//            float[] n = new float[2];
+//            //gauss = new Gauss2X2(a, b, r);
+//                
+//        }
+//        else{
+//            JOptionPane.showMessageDialog(null,"No se permiten números negativos","Programacion Lineal",JOptionPane.INFORMATION_MESSAGE);
+//        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
