@@ -139,7 +139,7 @@ public class Datos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4)
                             .addComponent(jButton2))))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,17 +179,20 @@ public class Datos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(!z.getText().equals("") && !reinstraintsTA.getText().equals("")){
+        if(!z.getText().equals("") && !reinstraintsTA.getText().equals(""))
             //Valisar Z
             if(restrinciones.validarZ(z.getText()))
                 //Validamos las restrinciones
-                if(restrinciones.validarRestrinciones(reinstraintsTA.getText()))
-                    System.out.println("bien");
+                if(restrinciones.validarRestrinciones(reinstraintsTA.getText())){
+                    restrinciones.obtenerValores();
+                    Resultados r = new Resultados(restrinciones.getRestrinciones(),restrinciones.getXyz());
+                    r.setVisible(true);
+                    this.dispose();
+                }
                 else
                     JOptionPane.showMessageDialog(null,"Escriba bien las restrinciones","Programacion Lineal",JOptionPane.ERROR_MESSAGE);   
             else
-             JOptionPane.showMessageDialog(null,"Escriba bien Z","Programacion Lineal",JOptionPane.ERROR_MESSAGE);   
-        }
+                JOptionPane.showMessageDialog(null,"Escriba bien Z","Programacion Lineal",JOptionPane.ERROR_MESSAGE);   
         else
             JOptionPane.showMessageDialog(null,"Llene todo los campos","Programacion Lineal",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed

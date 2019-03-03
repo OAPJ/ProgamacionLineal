@@ -13,19 +13,13 @@ import java.util.ArrayList;
  */
 public class Reinstraints {
     private String z;
-    private ArrayList<String> restrinciones; 
+    private ArrayList<String> restrinciones;
+    private ArrayList<double[]> xyz;//Valores que estan en las restriciones
     
     public Reinstraints(){
         this.z = "";
         restrinciones = new ArrayList<>();
-        /*this.reinstraint = ""; //Todas las restriciones
-        separateReintraints(); //Las separa por '\n'
-        x = new ArrayList<>();
-        y = new ArrayList<>();
-        c = new ArrayList<>();
-        xy = new ArrayList<>();
-        coordenas = new ArrayList<>();
-        graficar = new Graficar();*/
+        xyz = new ArrayList<>();
     }
     
     public boolean validarZ(String z){
@@ -90,39 +84,30 @@ public class Reinstraints {
         }
         //Guarda las restriciones una vez que son todas validas
         for(int i=0; i<res.length; i++)
-            restrinciones.add(res[i]);
+            getRestrinciones().add(res[i]);
         return true;
     }
     
-    public void obtenerValores(String r){
+    public void obtenerValores(){
         //Optenemos el valor de X de  Y y el valor de la ecucación
-//        String[] ecuacion = r.split("\\<=");
-//        c.add(Double.parseDouble(ecuacion[1]));
-//        String[] ecuacion2 = ecuacion[0].split("\\+");
-//        x.add(valorX(ecuacion2[0]));
-//        y.add(valorY(ecuacion2[1]));
-    }
-    
-    public double valorX(String x){
-//        String aux="";
-//        if(x.length() == 1)
-//            return 1;
-//        else
-//            for(int i=0; i<x.length()-1; i++)
-//                aux += x.charAt(i);
-//        return Double.parseDouble(aux);
-        return 0;
-    }
-    
-    public double valorY(String y){
-//        String aux="";
-//        if(y.length() == 1)
-//            return 1;
-//        else
-//            for(int i=0; i<y.length()-1; i++)
-//                aux += y.charAt(i);
-//        return Double.parseDouble(aux);
-        return 0;
+        for(int i=0; i<getRestrinciones().size(); i++){
+            //Separamos las restrinciones por <=
+            String[] ec  = getRestrinciones().get(i).split("\\<=");
+            //Separamos por el +
+            String[] ec2 = ec[0].split("\\+");
+            //Guardamos los valores
+            double[] aux = new double[3];
+            for(int j=0; j<ec2.length; j++){
+                String aux2 = "";
+                for(int k=0; k<ec2[j].length()-1; k++)
+                    aux2 += ec2[j].charAt(k);
+                if(aux2 == "")
+                    aux2 = "1";
+                aux[j] = Double.parseDouble(aux2);
+            }
+            aux[2] = Double.parseDouble(ec[1]);
+            this.getXyz().add(aux);
+        }
     }
     
     public void obtenerValoresGrafica(){
@@ -140,47 +125,25 @@ public class Reinstraints {
 //        double[] r = new double[]{c.get(0),c.get(1)};
 //        Gauss2X2 g = new Gauss2X2(a, b, r);
     }
-//
-//    /**
-//     * @return the reinstraintsArray
-//     */
-//    public String[] getReinstraintsArray() {
-//        return reinstraintsArray;
-//    }
-//
-//    /**
-//     * @return the reinstraint
-//     */
-//    public String getReinstraint() {
-//        return reinstraint;
-//    }
-//
-//    /**
-//     * @return the x
-//     */
-//    public ArrayList<Double> getX() {
-//        return x;
-//    }
-//
-//    /**
-//     * @return the y
-//     */
-//    public ArrayList<Double> getY() {
-//        return y;
-//    }
-//
-//    /**
-//     * @return the c
-//     */
-//    public ArrayList<Double> getC() {
-//        return c;
-//    }
-//
-//    /**
-//     * @return the xy
-//     */
-//    public ArrayList<int[]> getXy() {
-//        return xy;
-//    }
-    
+
+    /**
+     * @return the z
+     */
+    public String getZ() {
+        return z;
+    }
+
+    /**
+     * @return the restrinciones
+     */
+    public ArrayList<String> getRestrinciones() {
+        return restrinciones;
+    }
+
+    /**
+     * @return the xyz
+     */
+    public ArrayList<double[]> getXyz() {
+        return xyz;
+    }
 }
