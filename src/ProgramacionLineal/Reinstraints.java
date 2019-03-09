@@ -15,11 +15,14 @@ public class Reinstraints {
     private String z;
     private ArrayList<String> restrinciones;
     private ArrayList<double[]> xyz;//Valores que estan en las restriciones
+    private ArrayList<double[]> coordenadas; //Cordenas de la eccuacion
+    private Gauss2X2 gauss;
     
     public Reinstraints(){
         this.z = "";
         restrinciones = new ArrayList<>();
         xyz = new ArrayList<>();
+        coordenadas = new ArrayList<>();
     }
     
     public boolean validarZ(String z){
@@ -107,7 +110,14 @@ public class Reinstraints {
             }
             aux[2] = Double.parseDouble(ec[1]);
             this.getXyz().add(aux);
+            coordenadas.add(new double[]{aux[2]/aux[0],0});
+            coordenadas.add(new double[]{0,aux[2]/aux[1]});
         }
+        gauss = new Gauss2X2(xyz);
+        for(int i=0; i<gauss.getCoordenasdas().size(); i++)
+            coordenadas.add(gauss.getCoordenasdas().get(i));
+        for(int i=0; i<coordenadas.size(); i++)
+            System.out.println(coordenadas.get(i)[0]+" "+coordenadas.get(i)[1]);
     }
     
     public void obtenerValoresGrafica(){

@@ -13,20 +13,20 @@ import java.util.ArrayList;
  */
 public class Resultados extends javax.swing.JFrame {
     Graficar grafica = new Graficar();
-    private ArrayList<double[]> xyz;
+//    private ArrayList<double[]> xyz;
     /**
      * Creates new form Resultados
      */
     public Resultados() {
         initComponents();
         this.setLocationRelativeTo(null);
-        xyz = new ArrayList<>();
+//        xyz = new ArrayList<>();
     }
     
     public Resultados(ArrayList<String> ec, ArrayList<double[]> xyz) {
         initComponents();
         this.setLocationRelativeTo(null);
-        xyz = xyz;
+//        xyz = xyz;
         for(int i=0; i<xyz.size(); i++){
             grafica.agregarGrafica(ec.get(i), xyz.get(i)[2]/xyz.get(i)[0], xyz.get(i)[2]/xyz.get(i)[1]);
         }
