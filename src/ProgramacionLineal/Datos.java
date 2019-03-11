@@ -154,19 +154,24 @@ public class Datos extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if(!z.getText().equals("") && !reinstraintsTA.getText().equals(""))
-            //Valisar Z
-            if(restrinciones.validarZ(z.getText()))
-                //Validamos las restrinciones
-                if(restrinciones.validarRestrinciones(reinstraintsTA.getText())){
-                    restrinciones.obtenerValores();
-                    Resultados r = new Resultados(restrinciones.getRestrinciones(),restrinciones.getXyz());
-                    r.setVisible(true);
-                    this.dispose();
-                }
+            if(tipo == "Maximización")//Para el metodo de maximizacion
+                //Valisar Z
+                if(restrinciones.validarZ(z.getText()))
+                    //Validamos las restrinciones
+                    if(restrinciones.validarRestrinciones(reinstraintsTA.getText())){
+                        restrinciones.obtenerValores();
+                        restrinciones.evaluarCoordenadas();
+//                        Resultados r = new Resultados(restrinciones.getRestrinciones(),restrinciones.getXyz());
+                        Resultados r = new Resultados(restrinciones);
+                        r.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null,"Escriba bien las restricciones","Programación Lineal",JOptionPane.ERROR_MESSAGE);
                 else
-                    JOptionPane.showMessageDialog(null,"Escriba bien las restricciones","Programación Lineal",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Escriba bien Z","Programación Lineal",JOptionPane.ERROR_MESSAGE);   
             else
-                JOptionPane.showMessageDialog(null,"Escriba bien Z","Programación Lineal",JOptionPane.ERROR_MESSAGE);   
+                System.out.println("tipo");
         else
             JOptionPane.showMessageDialog(null,"Llene todo los campos","Programación Lineal",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed

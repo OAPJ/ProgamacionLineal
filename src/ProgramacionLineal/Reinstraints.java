@@ -16,16 +16,23 @@ public class Reinstraints {
     private ArrayList<String> restrinciones;
     private ArrayList<double[]> xyz;//Valores que estan en las restriciones
     private ArrayList<double[]> coordenadas; //Cordenas de la eccuacion
+    private ArrayList<double[]> coordenadasValidas; //Coordenas que estan en el rango
+    private ArrayList<Double> evaCoordenadas; //Valor de las coordenadas en z
     private Gauss2X2 gauss;
+    private double[] resultado; //Saber cual es el valor mayor y cuales son las coordenadas
     
     public Reinstraints(){
         this.z = "";
-        restrinciones = new ArrayList<>();
         xyz = new ArrayList<>();
         coordenadas = new ArrayList<>();
+        restrinciones = new ArrayList<>();
+        evaCoordenadas = new ArrayList<>();
+        coordenadasValidas = new ArrayList<>();
+        resultado = new double[3];
     }
     
     public boolean validarZ(String z){
+        this.z = z;
         z = z.replace(" ", ""); //Remove to spaces
         //Verificamos que no sea negativo
         if(z.contains("-")) return false;
@@ -114,26 +121,47 @@ public class Reinstraints {
             coordenadas.add(new double[]{0,aux[2]/aux[1]});
         }
         gauss = new Gauss2X2(xyz);
+        //Guardamos las cooredenas generadas por el metodo gauss
         for(int i=0; i<gauss.getCoordenasdas().size(); i++)
             coordenadas.add(gauss.getCoordenasdas().get(i));
+    }
+    
+    public void evaluarCoordenadas(){
+        //Otenemos los datos de z;
+        z = z.replace(" ", ""); //Remove to spaces
+        String[] ec = z.split("\\+");
+        String X="", Y="";
+        double x, y;
+        for(int i=0; i<ec[0].length()-1; i++)
+           X += ec[0].charAt(i);//Optenemos el valor de x
+        x = Double.parseDouble(X);
+        for(int i=0; i<ec[1].length()-1; i++)
+           Y += ec[1].charAt(i);//Optenemos el valor de y
+        y = Double.parseDouble(Y);
+        coordenadasValidas.add(new double[]{0,0});
         for(int i=0; i<coordenadas.size(); i++)
-            System.out.println(coordenadas.get(i)[0]+" "+coordenadas.get(i)[1]);
+            if(validarCumplanRestrincion(coordenadas.get(i)[0],coordenadas.get(i)[1])){
+                coordenadasValidas.add(coordenadas.get(i));//Guardamos las que si son validas
+            }
+        //Sacamos los valores respecto a z
+        for(int i=0; i< coordenadasValidas.size(); i++){
+            double r = x * coordenadasValidas.get(i)[0] + y * coordenadasValidas.get(i)[1];
+            if(r > getResultado()[2]){
+                resultado[0] = coordenadasValidas.get(i)[0];
+                resultado[1] = coordenadasValidas.get(i)[1];
+                resultado[2] = r;
+            }
+            evaCoordenadas.add(r);
+        }
     }
     
-    public void obtenerValoresGrafica(){
-//        for(int i=0; i<c.size(); i++){
-//            int[] aux = new int[2];
-//            aux[0] = (int)(c.get(i)/x.get(i));
-//            aux[1] = (int)(c.get(i)/y.get(i));
-//            xy.add(aux);
-//        }
-    }
-    
-    public void sacarCordenas(){
-//        double[] a = new double[]{x.get(0),x.get(1)};
-//        double[] b = new double[]{y.get(0),y.get(1)};
-//        double[] r = new double[]{c.get(0),c.get(1)};
-//        Gauss2X2 g = new Gauss2X2(a, b, r);
+    public boolean validarCumplanRestrincion(double x, double y){
+        //Esta funcion va a recorrero todas las restrinciones y va a verificar que se cumplan
+        //Para que sea valida
+        for(int i=0; i<xyz.size(); i++)
+            if((xyz.get(i)[0]*x + xyz.get(i)[1]*y) > xyz.get(i)[2])
+                return false;
+        return true;
     }
 
     /**
@@ -155,5 +183,26 @@ public class Reinstraints {
      */
     public ArrayList<double[]> getXyz() {
         return xyz;
+    }
+
+    /**
+     * @return the coordenadasValidas
+     */
+    public ArrayList<double[]> getCoordenadasValidas() {
+        return coordenadasValidas;
+    }
+
+    /**
+     * @return the evaCoordenadas
+     */
+    public ArrayList<Double> getEvaCoordenadas() {
+        return evaCoordenadas;
+    }
+
+    /**
+     * @return the resultado
+     */
+    public double[] getResultado() {
+        return resultado;
     }
 }
