@@ -162,7 +162,7 @@ public class Datos extends javax.swing.JFrame {
                         restrinciones.obtenerValores();
                         restrinciones.evaluarCoordenadas();
 //                        Resultados r = new Resultados(restrinciones.getRestrinciones(),restrinciones.getXyz());
-                        Resultados r = new Resultados(restrinciones);
+                        Resultados r = new Resultados(restrinciones, this.tipo);
                         r.setVisible(true);
                         this.dispose();
                     }
