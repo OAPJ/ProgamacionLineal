@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProgramacionLineal;
+package GUI;
 
+import GUI.Inicial;
+import GUI.Datos;
+import ProgramacionLineal.Graficar;
+import ProgramacionLineal.Reinstraints;
 import java.util.ArrayList;
 
 /**

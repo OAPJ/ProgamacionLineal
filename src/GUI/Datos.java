@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProgramacionLineal;
+package GUI;
 
+import ProgramacionLineal.Reinstraints;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -161,7 +162,6 @@ public class Datos extends javax.swing.JFrame {
                     if(restrinciones.validarRestrinciones(reinstraintsTA.getText())){
                         restrinciones.obtenerValores();
                         restrinciones.evaluarCoordenadas();
-//                        Resultados r = new Resultados(restrinciones.getRestrinciones(),restrinciones.getXyz());
                         Resultados r = new Resultados(restrinciones, this.tipo);
                         r.setVisible(true);
                         this.dispose();
@@ -170,16 +170,36 @@ public class Datos extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null,"Escriba bien las restricciones","Programación Lineal",JOptionPane.ERROR_MESSAGE);
                 else
                     JOptionPane.showMessageDialog(null,"Escriba bien Z","Programación Lineal",JOptionPane.ERROR_MESSAGE);   
-            else
-                System.out.println("tipo");
+            else{
+                //Valisar Z
+                if(restrinciones.validarZ(z.getText()))
+                    //Validamos las restrinciones
+                    if(restrinciones.validarRestrincionesMin(reinstraintsTA.getText())){
+                        restrinciones.obtenerValoresMin();
+                        restrinciones.evaluarCoordenadasMin();
+                        Resultados r = new Resultados(restrinciones, this.tipo);
+                        r.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null,"Escriba bien las restricciones","Programación Lineal",JOptionPane.ERROR_MESSAGE);
+                else
+                    JOptionPane.showMessageDialog(null,"Escriba bien Z","Programación Lineal",JOptionPane.ERROR_MESSAGE);
+            }
         else
             JOptionPane.showMessageDialog(null,"Llene todo los campos","Programación Lineal",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        z.setText("3x + 4y");
-        reinstraintsTA.setText("2.5x + y <= 20\n3x + 3y <= 30\nx + 2y <= 16");
+        if(tipo == "Maximización"){
+            z.setText("3x + 4y");
+            reinstraintsTA.setText("2.5x + y <= 20\n3x + 3y <= 30\nx + 2y <= 16");
+        }
+        else{
+            z.setText("120x + 60y");
+            reinstraintsTA.setText("3x + y => 15\nx + 5y => 20\n3x + 2y => 24");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void limpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaActionPerformed
