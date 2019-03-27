@@ -26,7 +26,6 @@ public class Datos extends javax.swing.JFrame {
         ImageIcon escoba =  new ImageIcon("src/imágenes/limpia.png");
         Icon escobaIcon = new ImageIcon(escoba.getImage().getScaledInstance(65, 55, Image.SCALE_DEFAULT));
         limpia.setIcon(escobaIcon);
-        
         ImageIcon flecha =  new ImageIcon("src/imágenes/flecha3.png");
         Icon flechaIcon = new ImageIcon(flecha.getImage().getScaledInstance(70, 60, Image.SCALE_DEFAULT));
         regresar.setIcon(flechaIcon);
@@ -37,7 +36,6 @@ public class Datos extends javax.swing.JFrame {
         if(tipo == "Minimización")
             jLabel4.setText("Minimización");
         restrinciones = new Reinstraints();
-
         
     }
 
