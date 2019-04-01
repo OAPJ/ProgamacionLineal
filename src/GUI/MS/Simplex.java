@@ -5,10 +5,14 @@
  */
 package GUI.MS;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 
 /**
  *
- * @author <Mikel>
+ * @author PUMPKIN
  */
 public class Simplex extends javax.swing.JFrame {
 
@@ -17,6 +21,15 @@ public class Simplex extends javax.swing.JFrame {
      */
     public Simplex() {
         initComponents();
+        ImageIcon logo1 =  new ImageIcon("src/imágenes/descarga.png");
+        ImageIcon logo2 =  new ImageIcon("src/imágenes/upiiz.png");
+        ImageIcon escoba =  new ImageIcon("src/imágenes/limpia.png");
+        Icon escobaIcon = new ImageIcon(escoba.getImage().getScaledInstance(45, 45, Image.SCALE_DEFAULT));
+        Icon icono1 = new ImageIcon(logo1.getImage().getScaledInstance(poli.getWidth(), poli.getHeight(), Image.SCALE_DEFAULT));
+        Icon icono2 = new ImageIcon(logo2.getImage().getScaledInstance(upiiz.getWidth(), upiiz.getHeight(), Image.SCALE_DEFAULT));
+        poli.setIcon(icono1);
+        upiiz.setIcon(icono2);
+        limpia.setIcon(escobaIcon);
     }
 
     /**
@@ -28,68 +41,161 @@ public class Simplex extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Tablas = new javax.swing.ButtonGroup();
+        Tablas_tipo = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        reinstraintsTA = new javax.swing.JTextArea();
+        Resolve = new javax.swing.JButton();
+        Example = new javax.swing.JButton();
+        z = new javax.swing.JTextField();
+        poli = new javax.swing.JLabel();
+        titulo2 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        titulo1 = new javax.swing.JLabel();
+        upiiz = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        limpia = new javax.swing.JButton();
+        solution = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        show = new javax.swing.JRadioButton();
+        hide = new javax.swing.JRadioButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        decimal = new javax.swing.JRadioButton();
+        fracción = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        process = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        reinstraintsTA.setColumns(20);
+        reinstraintsTA.setRows(5);
+        jScrollPane1.setViewportView(reinstraintsTA);
 
-        jButton1.setText("Resolver");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 240, 155));
 
-        jButton2.setText("Ejemplo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Resolve.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Resolve.setText("Resolver");
+        getContentPane().add(Resolve, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 100, 40));
+
+        Example.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Example.setText("Ejemplo");
+        Example.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ExampleActionPerformed(evt);
             }
         });
+        getContentPane().add(Example, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 90, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton2)
-                                .addGap(54, 54, 54)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(167, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(50, 50, 50))
-        );
+        z.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(z, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 140, 30));
+
+        poli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/descarga.png"))); // NOI18N
+        getContentPane().add(poli, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 110, 110));
+
+        titulo2.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
+        titulo2.setText("MÉTODOS CUANTITATIVOS");
+        getContentPane().add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, 40));
+
+        titulo.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
+        titulo.setText("PARA LA TOMA DE DECISIONES");
+        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, 40));
+
+        titulo1.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo1.setText("Método Simplex");
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 310, 60));
+
+        upiiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/upiiz.png"))); // NOI18N
+        getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 130, 120));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 870, -1));
+
+        jLabel2.setFont(new java.awt.Font("Prestige Elite Std", 1, 21)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Maximización");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 200, 50));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel1.setText("Modo de tablas:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel3.setText("Z = ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 30, 30));
+
+        limpia.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
+        limpia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/limpia.png"))); // NOI18N
+        limpia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(limpia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 50, 50));
+
+        solution.setEditable(false);
+        solution.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        getContentPane().add(solution, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 740, 40));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel4.setText("Restricciones:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 140, 30));
+
+        Tablas.add(show);
+        show.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        show.setText("Mostrar tablas");
+        getContentPane().add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+
+        Tablas.add(hide);
+        hide.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        hide.setText("Ocultar tablas");
+        getContentPane().add(hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 430, 10));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel5.setText("Solución:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 140, 40));
+
+        Tablas_tipo.add(decimal);
+        decimal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        decimal.setText("Decimal");
+        getContentPane().add(decimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
+
+        Tablas_tipo.add(fracción);
+        fracción.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fracción.setText("Fracción");
+        getContentPane().add(fracción, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+
+        process.setEditable(false);
+        process.setColumns(20);
+        process.setRows(5);
+        jScrollPane2.setViewportView(process);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 390, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.jTextArea1.setText("2.5x + y <= 20\n"+"3x + 3y <= 30\n"+"x + 2y <= 16");
-        this.jTextField1.setText("3x + 4y");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void ExampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExampleActionPerformed
+        this.reinstraintsTA.setText("2.5x + y <= 20\n"+"3x + 3y <= 30\n"+"x + 2y <= 16");
+        this.z.setText("3x + 4y");
+    }//GEN-LAST:event_ExampleActionPerformed
+
+    private void limpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaActionPerformed
+        //LIMPIAR
+        z.setText("");
+        reinstraintsTA.setText("");
+        solution.setText("");
+        process.setText("");
+    }//GEN-LAST:event_limpiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,10 +233,32 @@ public class Simplex extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Example;
+    private javax.swing.JButton Resolve;
+    private javax.swing.ButtonGroup Tablas;
+    private javax.swing.ButtonGroup Tablas_tipo;
+    private javax.swing.JRadioButton decimal;
+    private javax.swing.JRadioButton fracción;
+    private javax.swing.JRadioButton hide;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JButton limpia;
+    private javax.swing.JLabel poli;
+    private javax.swing.JTextArea process;
+    private javax.swing.JTextArea reinstraintsTA;
+    private javax.swing.JRadioButton show;
+    private javax.swing.JTextField solution;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo1;
+    private javax.swing.JLabel titulo2;
+    private javax.swing.JLabel upiiz;
+    private javax.swing.JTextField z;
     // End of variables declaration//GEN-END:variables
 }
