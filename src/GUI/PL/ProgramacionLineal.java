@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI.PL;
 
 import ProgramacionLineal.Gauss2X2;
 import ProgramacionLineal.Graficar;
