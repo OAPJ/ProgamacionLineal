@@ -5,9 +5,14 @@
  */
 package GUI.MS;
 
+import Menu.Menu;
+import MetodoSimplex.Matriz;
+import MetodoSimplex.ValidarSimplex;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -15,12 +20,16 @@ import javax.swing.ImageIcon;
  * @author PUMPKIN
  */
 public class Simplex extends javax.swing.JFrame {
-
+    Matriz matriz;
+    ValidarSimplex simplex;
+    String matrizInicial;
     /**
      * Creates new form Simplex
      */
     public Simplex() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setSize(880, 720);
         ImageIcon logo1 =  new ImageIcon("src/imágenes/descarga.png");
         ImageIcon logo2 =  new ImageIcon("src/imágenes/upiiz.png");
         ImageIcon escoba =  new ImageIcon("src/imágenes/limpia.png");
@@ -30,6 +39,13 @@ public class Simplex extends javax.swing.JFrame {
         poli.setIcon(icono1);
         upiiz.setIcon(icono2);
         limpia.setIcon(escobaIcon);
+        ImageIcon home =  new ImageIcon("src/imágenes/casita.png");
+        Icon homeIcon = new ImageIcon(home.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        regresar.setIcon(homeIcon);
+        inical.setEnabled(false);
+        finalT.setEnabled(false);
+        lasDos.setEnabled(false);
+        falso.setVisible(false);
     }
 
     /**
@@ -53,23 +69,25 @@ public class Simplex extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
         upiiz = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         limpia = new javax.swing.JButton();
-        solution = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        show = new javax.swing.JRadioButton();
-        hide = new javax.swing.JRadioButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        decimal = new javax.swing.JRadioButton();
-        fracción = new javax.swing.JRadioButton();
+        finalT = new javax.swing.JRadioButton();
+        inical = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         process = new javax.swing.JTextArea();
+        lasDos = new javax.swing.JRadioButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        solution = new javax.swing.JTextArea();
+        falso = new javax.swing.JRadioButton();
+        regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Método Simplex");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reinstraintsTA.setColumns(20);
@@ -80,6 +98,11 @@ public class Simplex extends javax.swing.JFrame {
 
         Resolve.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Resolve.setText("Resolver");
+        Resolve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResolveActionPerformed(evt);
+            }
+        });
         getContentPane().add(Resolve, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 100, 40));
 
         Example.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -112,7 +135,6 @@ public class Simplex extends javax.swing.JFrame {
 
         upiiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/upiiz.png"))); // NOI18N
         getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 130, 120));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 870, -1));
 
         jLabel2.setFont(new java.awt.Font("Prestige Elite Std", 1, 21)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 0, 51));
@@ -120,10 +142,10 @@ public class Simplex extends javax.swing.JFrame {
         jLabel2.setText("Maximización");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 200, 50));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel1.setText("Modo de tablas:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 140, 30));
+        jLabel1.setText("Tablas:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 120, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 0));
@@ -139,24 +161,10 @@ public class Simplex extends javax.swing.JFrame {
         });
         getContentPane().add(limpia, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 50, 50));
 
-        solution.setEditable(false);
-        solution.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        getContentPane().add(solution, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 740, 40));
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 0, 0));
         jLabel4.setText("Restricciones:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 140, 30));
-
-        Tablas.add(show);
-        show.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        show.setText("Mostrar tablas");
-        getContentPane().add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
-
-        Tablas.add(hide);
-        hide.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        hide.setText("Ocultar tablas");
-        getContentPane().add(hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 430, 10));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -164,15 +172,25 @@ public class Simplex extends javax.swing.JFrame {
         jLabel5.setText("Solución:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 140, 40));
 
-        Tablas_tipo.add(decimal);
-        decimal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        decimal.setText("Decimal");
-        getContentPane().add(decimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
+        Tablas_tipo.add(finalT);
+        finalT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        finalT.setText("Final");
+        finalT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalTActionPerformed(evt);
+            }
+        });
+        getContentPane().add(finalT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
 
-        Tablas_tipo.add(fracción);
-        fracción.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        fracción.setText("Fracción");
-        getContentPane().add(fracción, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+        Tablas_tipo.add(inical);
+        inical.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        inical.setText("Inical");
+        inical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inicalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(inical, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
 
         process.setEditable(false);
         process.setColumns(20);
@@ -180,6 +198,34 @@ public class Simplex extends javax.swing.JFrame {
         jScrollPane2.setViewportView(process);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, 390, 320));
+
+        Tablas_tipo.add(lasDos);
+        lasDos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lasDos.setText("Las Dos");
+        lasDos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lasDosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(lasDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+
+        solution.setEditable(false);
+        solution.setColumns(20);
+        solution.setRows(5);
+        jScrollPane3.setViewportView(solution);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, 640, 80));
+
+        Tablas_tipo.add(falso);
+        falso.setText("falso");
+        getContentPane().add(falso, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 450, -1, -1));
+
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, 80, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,7 +241,61 @@ public class Simplex extends javax.swing.JFrame {
         reinstraintsTA.setText("");
         solution.setText("");
         process.setText("");
+        inical.setSelected(false);
+        finalT.setSelected(false);
+        lasDos.setSelected(false);
+        lasDos.updateUI();
+        inical.setEnabled(false);
+        finalT.setEnabled(false);
+        lasDos.setEnabled(false);
+        falso.setSelected(true);
+        this.repaint();
     }//GEN-LAST:event_limpiaActionPerformed
+
+    private void ResolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResolveActionPerformed
+        // TODO add your handling code here:
+        inical.setEnabled(true);
+        finalT.setEnabled(true);
+        lasDos.setEnabled(true);
+        try{
+            this.simplex=new ValidarSimplex();
+            if(this.simplex.validarZ(this.z.getText())){
+                if(this.simplex.validarRestricciones(this.reinstraintsTA.getText())){
+                    this.matriz= new Matriz();
+                    this.matriz.crearMatriz(simplex);
+                    this.matrizInicial=matriz.mostrarMatriz();
+                    matriz.resolverMaximizacion();
+                    matriz.intrepretacion();
+                    this.solution.setText(matriz.intrepretacion()); 
+                } else JOptionPane.showMessageDialog(null,"Introduzca restricciones validas");
+            }else JOptionPane.showMessageDialog(null,"Introduzca una función objetivo valido");
+        }catch(StringIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null,"Introduzca introcciones");
+        }
+    }//GEN-LAST:event_ResolveActionPerformed
+
+    private void inicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicalActionPerformed
+        // Mostrar tabla inicail
+        this.process.setText("           TABLA INCIAL           \n"+matriz.variables()+"\n"+matrizInicial);
+    }//GEN-LAST:event_inicalActionPerformed
+
+    private void finalTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalTActionPerformed
+        // Mostrar tabla final
+        this.process.setText("           TABLA FINAL           \n"+matriz.variables()+"\n"+matriz.mostrarMatriz());
+    }//GEN-LAST:event_finalTActionPerformed
+
+    private void lasDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lasDosActionPerformed
+        // TODO add your handling code here:
+        this.process.setText("           TABLA INCIAL           \n"+matriz.variables()+"\n"+matrizInicial
+        +"\n\n           TABLA FINAL           \n"+matriz.variables()+"\n"+matriz.mostrarMatriz());
+    }//GEN-LAST:event_lasDosActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        // TODO add your handling code here:
+        Menu d = new Menu();
+        d.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,9 +337,9 @@ public class Simplex extends javax.swing.JFrame {
     private javax.swing.JButton Resolve;
     private javax.swing.ButtonGroup Tablas;
     private javax.swing.ButtonGroup Tablas_tipo;
-    private javax.swing.JRadioButton decimal;
-    private javax.swing.JRadioButton fracción;
-    private javax.swing.JRadioButton hide;
+    private javax.swing.JRadioButton falso;
+    private javax.swing.JRadioButton finalT;
+    private javax.swing.JRadioButton inical;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -247,14 +347,15 @@ public class Simplex extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JRadioButton lasDos;
     private javax.swing.JButton limpia;
     private javax.swing.JLabel poli;
     private javax.swing.JTextArea process;
+    private javax.swing.JButton regresar;
     private javax.swing.JTextArea reinstraintsTA;
-    private javax.swing.JRadioButton show;
-    private javax.swing.JTextField solution;
+    private javax.swing.JTextArea solution;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;

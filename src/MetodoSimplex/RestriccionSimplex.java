@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProgramacionLineal;
+package MetodoSimplex;
 
 /**
  *
@@ -24,24 +24,39 @@ public class RestriccionSimplex {
         this.variable=new char[valores.length];
         try{
             for(int i=0;i<this.variable.length;i++){
-                int aux= valores[i].length();
-                variable[i]=valores[i].charAt(aux-1);
-                if(aux==1){
-                    this.valores[i]=1;
-                }else{
-                    this.valores[i]= Double.parseDouble(valores[i].substring(0, aux-1));
-                }
-                if(restriccion.lastIndexOf(variable[i])!=restriccion.indexOf(variable[i]))
+                try{
+                    Double.parseDouble(valores[i]);
                     return false;
+                }catch(NumberFormatException e){
+                     int aux= valores[i].length();
+                    variable[i]=valores[i].charAt(aux-1);
+                    if(aux==1){
+                        this.valores[i]=1;
+                    }else{
+                        this.valores[i]= Double.parseDouble(valores[i].substring(0, aux-1));
+                    }
+                    if(restriccion.lastIndexOf(variable[i])!=restriccion.indexOf(variable[i]))
+                        return false;
+                }
+                
             }
             return true;
         }catch(NumberFormatException x){
             return false;
         }
     }
+
+    public double[] getValores() {
+        return valores;
+    }
+
+    public char[] getVariable() {
+        return variable;
+    }
     public static void main(String[] args) {
         RestriccionSimplex r = new RestriccionSimplex();
-        System.out.println(r.validarRestriccion("2.5x + x "));
+        System.out.println(r.validarRestriccion("2.5x + k+ 1 "));
+        System.out.println("");
     }
     
 }

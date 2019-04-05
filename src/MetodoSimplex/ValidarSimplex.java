@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ProgramacionLineal;
+package MetodoSimplex;
 
 /**
  *
@@ -13,7 +13,11 @@ public class ValidarSimplex {
     private double[] zValores;
     private char[] variable;
     private RestriccionSimplex[] restricciones;
-    private double[] limites;
+    private double[] constantes;
+
+    public double[] getConstantes() {
+        return constantes;
+    }
     public double[] getzValores() {
         return zValores;
     }
@@ -23,7 +27,7 @@ public class ValidarSimplex {
     }
 
     public double[] getLimites() {
-        return limites;
+        return constantes;
     }
 
     public char[] getVariable() {
@@ -40,7 +44,11 @@ public class ValidarSimplex {
         this.variable=new char[valores.length];
         try{
             for(int i=0;i<this.variable.length;i++){
-                int aux= valores[i].length();
+                try{
+                    Double.parseDouble(valores[i]);
+                    return false;
+                }catch(NumberFormatException d){
+                    int aux= valores[i].length();
                 variable[i]=valores[i].charAt(aux-1);
                 if(aux==1){
                     zValores[i]=1;
@@ -49,6 +57,7 @@ public class ValidarSimplex {
                 }
                 if(z.lastIndexOf(variable[i])!=z.indexOf(variable[i]))
                     return false;
+                }
             }
             return true;
         }catch(NumberFormatException x){
@@ -58,13 +67,13 @@ public class ValidarSimplex {
     public boolean validarRestricciones(String res){
         String[] restriccionesAux= res.split("\n");
         this.restricciones=new RestriccionSimplex[restriccionesAux.length];
-        this.limites= new double[restriccionesAux.length];
+        this.constantes= new double[restriccionesAux.length];
         for(int i=0;i<this.restricciones.length;i++){
             String[] aux= restriccionesAux[i].split("\\<=");
             this.restricciones[i]= new RestriccionSimplex();
             if(this.restricciones[i].validarRestriccion(aux[0])){
                 try{
-                    this.limites[i]= Double.parseDouble(aux[1]);
+                    this.constantes[i]= Double.parseDouble(aux[1]);
                 }catch(NumberFormatException e){
                     return false;
                 }
@@ -74,7 +83,7 @@ public class ValidarSimplex {
     }
     public static void main(String[] args) {
         ValidarSimplex v = new ValidarSimplex();
-        boolean s=v.validarRestricciones("3x + 1a+ 4y+ 99z+ 88n<=2 \n 4q + 4p+ 5y+ 99z+ 88n <=2");
+        boolean s=v.validarZ("3x + 1a+ 4y+ 99.14t+ 88n");
         System.out.println(s);
     }
 }

@@ -201,9 +201,11 @@ public class Reinstraints {
         double x, y;
         for(int i=0; i<ec[0].length()-1; i++)
            X += ec[0].charAt(i);//Optenemos el valor de x
+        if(X == "") X = "1";
         x = Double.parseDouble(X);
         for(int i=0; i<ec[1].length()-1; i++)
            Y += ec[1].charAt(i);//Optenemos el valor de y
+        if(Y == "") Y = "1";
         y = Double.parseDouble(Y);
         coordenadasValidas.add(new double[]{0,0});
         for(int i=0; i<coordenadas.size(); i++)

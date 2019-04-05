@@ -60,7 +60,7 @@ public class ProgramacionLineal extends javax.swing.JFrame {
         jPanel2 = grafica.obtenerGrafica();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Programacion Lineal");
+        setTitle("Método Gráfico");
         setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
