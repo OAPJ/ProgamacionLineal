@@ -1,0 +1,58 @@
+¡Hola! Bienvenido, bienvenido al manual de usuario :D
+1
+Aquí te enseñaremos a usar la presente aplicación, por si tienes complicaciones y siempre podrás regresar
+a tu pantalla principal para consultar el manual de usuario c;
+Para empezar, debes seleccionar el método por el cuál deseas maximizar o minizar tu función objetivo
+NOTA: Recuerda que el método gráfico únicamente es posible alicarlo para problemáticas con dos variables
+
+== Método gráfico ==
+¿Qué deseas maximizar o minimizar tu función objetivo?
+2
+
+Minimización
+3
+Es necesario llenar todos los campos, en pantalla se muestra un ejemplo de cómo introducir
+tanto tu función objetivo como las restricciones, deigual manera en la pantalla se encontrará
+el botón de ejemplo y así únicamente tendrás que sustiur los valores de tu función objetivo y 
+restricciones del ejemplo, así como añadir o eliminar las restrcciones que necesites.
+NOTA: Si te es necesario borrar todo, utiliza el botón de tu escobita mágica jijijijijijiji
+Recuerda acompañar tus restricciones con el signo => y cuando todo esté listo solo presiona el botón de solución :3
+4
+En la pantalla de resultados, podrás observar la gráfica generada por tus restricciones, tu función objetivo
+y los valores de los posibles resultados junto con su valor de beneficio que se puede obtener.
+Por último tu solución más óptima acompañada de su valor de beneficio y una breve interpretación de ella c;
+Cuando sientas que haz terminado puedes tanto regresar como a tu pantalla anterior (botón de flechita)
+como al menú del método gráfico (botón de casa).
+
+Maximización.
+3MA
+Es necesario llenar todos los campos, en pantalla se muestra un ejemplo de cómo introducir
+tanto tu función objetivo como las restricciones, de igual manera en la pantalla se encontrará
+el botón de ejemplo y así únicamente tendrás que sustiur los valores de tu función objetivo y 
+restricciones del ejemplo, así como añadir o eliminar las restrcciones que necesites.
+NOTA: Si te es necesario borrar todo, utiliza el botón de tu escobita mágica jijijijijijiji
+Recuerda acompañar tus restricciones con el signo <= y cuando todo esté listo solo presiona el botón de solución :3
+4MA
+En la pantalla de resultados, podrás observar la gráfica generada por tus restricciones, tu función objetivo
+y los valores de los posibles resultados junto con su valor de beneficio que se puede obtener.
+Por último tu solución más óptima acompañada de su valor de beneficio y una breve interpretación de ella c;
+Cuando sientas que haz terminado puedes tanto regresar como a tu pantalla anterior (botón de flechita)
+como al menú del método gráfico (botón de casa).
+
+
+== Método Simplex ==
+5
+Es necesario llenar todos los campos, en pantalla se muestra un ejemplo de cómo introducir
+tanto tu función objetivo como las restricciones.Pero no te apures, en la pantalla se encontrará
+un botón de ejemplo y así únicamente al presionarlo tendrás que sustiur los valores de tu función objetivo y 
+restricciones del ejemplo, así como añadir o eliminar las restrcciones que necesites.
+NOTA: Si te es necesario borrar todo, utiliza el botón de tu escobita mágica jijijijijijiji
+La presente apliación únicamente soluciona problemas de máximización por lo que es necesario acompañar tus 
+restricciones con el signo <= y cuando todo esté listo solo presiona el botón de Resolver :3
+Inmediatamente te mostrará una pequeña interpretación con la solución más óptima a tu problemática
+y se habilitará la opción de "Tablas" donde nada más es necesario seleccionar si quieres observar la matriz
+incial, final o ambas del proceso de resolución. Mostrado en las primeras columas las variables de tu problema, 
+enseguida los valores de las variables flojas y en la última columna las constantes.
+Cuando sientas que haz terminado puedes tanto regresar al menú de la aplicación (botón de casa).
+
+

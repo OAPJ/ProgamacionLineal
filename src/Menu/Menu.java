@@ -59,6 +59,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Programación Lineal");
@@ -89,7 +90,7 @@ public class Menu extends javax.swing.JFrame {
                 MGActionPerformed(evt);
             }
         });
-        getContentPane().add(MG, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, 80));
+        getContentPane().add(MG, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, 80));
 
         MS.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         MS.setText("Método Simplex");
@@ -98,7 +99,7 @@ public class Menu extends javax.swing.JFrame {
                 MSActionPerformed(evt);
             }
         });
-        getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 210, -1, 80));
+        getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, 80));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 430, 30));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 0))), "Elaborado por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
@@ -137,6 +138,10 @@ public class Menu extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 410, 130));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("Manual de Usuario");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 213, -1, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,6 +198,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MG;
     private javax.swing.JButton MS;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
