@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Datos extends javax.swing.JFrame {
     private String tipo;
-    private Reinstraints restrinciones;
+    private Reinstraints restrincciones;
     /**
      * Creates new form Datos
      */
@@ -35,7 +35,7 @@ public class Datos extends javax.swing.JFrame {
         this.tipo = tipo;
         if(tipo == "Minimización")
             jLabel4.setText("Minimización");
-        restrinciones = new Reinstraints();
+        restrincciones = new Reinstraints();
         
     }
 
@@ -43,7 +43,7 @@ public class Datos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.tipo = tipo;
-        restrinciones = new Reinstraints();
+        restrincciones = new Reinstraints();
         
     }
 
@@ -151,41 +151,41 @@ public class Datos extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        //Botón de Solución 
         if(!z.getText().equals("") && !reinstraintsTA.getText().equals(""))
             if(tipo == "Maximización")//Para el metodo de maximizacion
-                //Valisar Z
-                if(restrinciones.validarZ(z.getText()))
+                //Validar Z
+                if(restrincciones.validarZ(z.getText()))
                     //Validamos las restrinciones
-                    if(restrinciones.validarRestrinciones(reinstraintsTA.getText())){
-                        restrinciones.obtenerValores();
-                        restrinciones.evaluarCoordenadas();
-                        Resultados r = new Resultados(restrinciones, this.tipo);
+                    if(restrincciones.validarRestrinciones(reinstraintsTA.getText())){
+                        restrincciones.obtenerValores();
+                        restrincciones.evaluarCoordenadas();
+                        Resultados r = new Resultados(restrincciones, this.tipo);
                         r.setVisible(true);
                         this.dispose();
                     }
                     else
                         JOptionPane.showMessageDialog(null,"Escriba bien las restricciones","Programación Lineal",JOptionPane.ERROR_MESSAGE);
                 else
-                    JOptionPane.showMessageDialog(null,"Escriba bien Z","Programación Lineal",JOptionPane.ERROR_MESSAGE);   
+                    JOptionPane.showMessageDialog(null,"Función Z incorrecta","Programación Lineal",JOptionPane.ERROR_MESSAGE);   
             else{
-                //Valisar Z
-                if(restrinciones.validarZ(z.getText()))
+                //Validar Z
+                if(restrincciones.validarZ(z.getText()))
                     //Validamos las restrinciones
-                    if(restrinciones.validarRestrincionesMin(reinstraintsTA.getText())){
-                        restrinciones.obtenerValoresMin();
-                        restrinciones.evaluarCoordenadasMin();
-                        Resultados r = new Resultados(restrinciones, this.tipo);
+                    if(restrincciones.validarRestrincionesMin(reinstraintsTA.getText())){
+                        restrincciones.obtenerValoresMin();
+                        restrincciones.evaluarCoordenadasMin();
+                        Resultados r = new Resultados(restrincciones, this.tipo);
                         r.setVisible(true);
                         this.dispose();
                     }
                     else
                         JOptionPane.showMessageDialog(null,"Escriba bien las restricciones","Programación Lineal",JOptionPane.ERROR_MESSAGE);
                 else
-                    JOptionPane.showMessageDialog(null,"Escriba bien Z","Programación Lineal",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Función Z incorrecta","Programación Lineal",JOptionPane.ERROR_MESSAGE);
             }
         else
-            JOptionPane.showMessageDialog(null,"Llene todo los campos","Programación Lineal",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Completa todos los campos","Programación Lineal",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

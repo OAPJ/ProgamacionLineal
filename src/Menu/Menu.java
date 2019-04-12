@@ -8,6 +8,7 @@ package Menu;
 
 import GUI.MS.Simplex;
 import GUI.PL.Inicial;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -19,6 +20,7 @@ import javax.swing.ImageIcon;
 public class Menu extends javax.swing.JFrame {
     private Simplex ms;
     private Inicial mg;
+    private Manual m;
 
     /**
      * Creates new form Menu
@@ -26,16 +28,18 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(800, 550);
+        this.setSize(780, 530);
+        this.getContentPane().setBackground(Color.WHITE);
+        jPanel1.setBackground(Color.WHITE);
         ImageIcon logo1 =  new ImageIcon("src/imágenes/descarga.png");
         ImageIcon logo2 =  new ImageIcon("src/imágenes/upiiz.png");
-        ImageIcon fondoL =  new ImageIcon("src/imágenes/HojaPapel.png");
-//        Icon hoja = new ImageIcon(fondoL.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
+        ImageIcon manualIMG =  new ImageIcon("src/imágenes/Help-icon.png");
+        Icon mIcon = new ImageIcon(manualIMG.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
         Icon icono1 = new ImageIcon(logo1.getImage().getScaledInstance(poli.getWidth(), poli.getHeight(), Image.SCALE_DEFAULT));
         Icon icono2 = new ImageIcon(logo2.getImage().getScaledInstance(upiiz.getWidth(), upiiz.getHeight(), Image.SCALE_DEFAULT));
         poli.setIcon(icono1);
         upiiz.setIcon(icono2);
-//        fondo.setIcon(hoja);
+        manual.setIcon(mIcon);
     }
 
     /**
@@ -59,10 +63,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        manual = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Programación Lineal");
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
@@ -76,30 +81,31 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 130, 120));
 
         titulo1.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(51, 0, 0));
         titulo1.setText("Programación lineal");
-        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 310, 60));
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 310, 60));
 
         titulo2.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
         titulo2.setText("MÉTODOS CUANTITATIVOS");
         getContentPane().add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, 40));
 
-        MG.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
-        MG.setText("Método Gráfico");
+        MG.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        MG.setText("MÉTODO GRÁFICO");
         MG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MGActionPerformed(evt);
             }
         });
-        getContentPane().add(MG, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, 80));
+        getContentPane().add(MG, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, -1, 80));
 
-        MS.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
-        MS.setText("Método Simplex");
+        MS.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        MS.setText("MÉTODO SIMPLEX");
         MS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MSActionPerformed(evt);
             }
         });
-        getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, 80));
+        getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 80));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 430, 30));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 0))), "Elaborado por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
@@ -137,11 +143,16 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 410, 130));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 410, 130));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Manual de Usuario");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 213, -1, 80));
+        manual.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        manual.setText("  Manual de Usuario");
+        manual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manualActionPerformed(evt);
+            }
+        });
+        getContentPane().add(manual, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 250, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,6 +170,13 @@ public class Menu extends javax.swing.JFrame {
         ms.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MSActionPerformed
+
+    private void manualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualActionPerformed
+        //Manual de usuario
+        m = new Manual();
+        m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_manualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,12 +216,12 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MG;
     private javax.swing.JButton MS;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton manual;
     private javax.swing.JLabel poli;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
