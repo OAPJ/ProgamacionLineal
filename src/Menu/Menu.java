@@ -82,6 +82,7 @@ public class Menu extends javax.swing.JFrame {
 
         titulo1.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
         titulo1.setForeground(new java.awt.Color(51, 0, 0));
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo1.setText("Programación lineal");
         getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 310, 60));
 
@@ -108,7 +109,7 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 80));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 430, 30));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 0))), "Elaborado por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 0))), "Elaborado por:", 0, 0, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Juan Antonio Ovalle Patiño");
