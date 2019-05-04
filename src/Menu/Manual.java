@@ -5,7 +5,6 @@
  */
 package Menu;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
@@ -230,6 +229,8 @@ public class Manual extends javax.swing.JFrame {
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         //EXIT
+        Menu m = new Menu();
+        m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_closeActionPerformed
 
