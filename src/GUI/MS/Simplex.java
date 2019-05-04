@@ -260,7 +260,7 @@ public class Simplex extends javax.swing.JFrame {
         try{
             this.simplex=new ValidarSimplex();
             if(this.simplex.validarZ(this.z.getText())){
-                if(this.simplex.validarRestricciones(this.reinstraintsTA.getText())){
+                if(this.simplex.validarRestriccionesMax(this.reinstraintsTA.getText())){
                     this.matriz= new Matriz();
                     this.matriz.crearMatriz(simplex);
                     this.matrizInicial=matriz.mostrarMatriz();

@@ -25,7 +25,12 @@ public class Manual extends javax.swing.JFrame {
     /**
      * Creates new form Manual
      */
-
+    @Override
+    public void dispose(){
+        Menu m = new Menu();
+        m.setVisible(true);
+        super.dispose();
+    }
     public void llenar(){    
         this.instrucciones[0] = "\n¡Hola! Bienvenid@ al manual de usuario :D \n" +
                                 "Aquí te enseñaremos a usar la presente aplicación, por si tienes complicaciones y no te apures \n"+
@@ -112,7 +117,7 @@ public class Manual extends javax.swing.JFrame {
         BOTTOM = new javax.swing.JEditorPane();
         TOP = new javax.swing.JTextPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 255));
         setPreferredSize(new java.awt.Dimension(0, 761));
         getContentPane().setLayout(null);

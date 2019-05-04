@@ -64,7 +64,7 @@ public class ValidarSimplex {
             return false;
         }
     }
-    public boolean validarRestricciones(String res){
+    public boolean validarRestriccionesMax(String res){
         String[] restriccionesAux= res.split("\n");
         this.restricciones=new RestriccionSimplex[restriccionesAux.length];
         this.constantes= new double[restriccionesAux.length];
@@ -81,6 +81,33 @@ public class ValidarSimplex {
         }
         return true;
     }
+    
+    public boolean validarRestriccionesMin(String res){
+        String[] restriccionesAux= res.split("\n");
+        this.restricciones=new RestriccionSimplex[restriccionesAux.length];
+        this.constantes= new double[restriccionesAux.length];
+        for(int i=0;i<this.restricciones.length;i++){
+            String[] aux= restriccionesAux[i].split("\\=>");
+            this.restricciones[i]= new RestriccionSimplex();
+            if(this.restricciones[i].validarRestriccion(aux[0])){
+                try{
+                    this.constantes[i]= Double.parseDouble(aux[1]);
+                }catch(NumberFormatException e){
+                    return false;
+                }
+            }else return false;
+        }
+        return true;
+    }
+
+    public void setConstantes(double[] constantes) {
+        this.constantes = constantes;
+    }
+
+    public void setRestricciones(RestriccionSimplex[] restricciones) {
+        this.restricciones = restricciones;
+    }
+    
     public static void main(String[] args) {
         ValidarSimplex v = new ValidarSimplex();
         boolean s=v.validarZ("3x + 1a+ 4y+ 99.14t+ 88n");

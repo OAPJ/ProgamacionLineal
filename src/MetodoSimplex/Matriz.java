@@ -167,7 +167,7 @@ public class Matriz {
     public static void main(String[] args) {
         ValidarSimplex vs= new ValidarSimplex();
         vs.validarZ("3x+c");
-        vs.validarRestricciones("3c+2x<=2\n 3x+4c<=3\n 2x+2c<=5");
+        vs.validarRestriccionesMax("3c+2x<=2\n 3x+4c<=3\n 2x+2c<=5");
         Matriz m= new Matriz();
         m.crearMatriz(vs);
         System.out.println("");

@@ -9,7 +9,10 @@ import ProgramacionLineal.Reinstraints;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,6 +23,7 @@ public class Datos extends javax.swing.JFrame {
     private Reinstraints restrincciones;
     /**
      * Creates new form Datos
+     * @param tipo
      */
     public Datos(String tipo) {
         initComponents();
@@ -46,7 +50,15 @@ public class Datos extends javax.swing.JFrame {
         restrincciones = new Reinstraints();
         
     }
+    
+    public JTextArea getReinstraintsTA() {
+        return reinstraintsTA;
+    }
 
+    public JTextField getZ() {
+        return z;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -188,6 +200,18 @@ public class Datos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Completa todos los campos","Programación Lineal",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Reinstraints getRestrincciones() {
+        return restrincciones;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if(tipo == "Maximización"){
@@ -236,7 +260,7 @@ public class Datos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Datos().setVisible(true);
+                new Datos("Maximizar").setVisible(true);
             }
         });
     }

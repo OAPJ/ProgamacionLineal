@@ -11,14 +11,19 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
  * @author ovall
  */
 public class Resultados extends javax.swing.JFrame {
-    Graficar grafica = new Graficar();
-    String tipo;
+    private Graficar grafica = new Graficar();
+
+    public String getTipo() {
+        return tipo;
+    }
+    private String tipo;
 //    private ArrayList<double[]> xyz;
     /**
      * Creates new form Resultados
@@ -80,6 +85,10 @@ public class Resultados extends javax.swing.JFrame {
         jTextField4.setText(r.getZ());
         jTextArea1.setText("La mejor opción para la empresa sería fabricar "+r.getResultado()[0]+" del elemento X\ny "+
                 r.getResultado()[1]+" del elemento Y, para así obtener una resultado de "+r.getResultado()[2]);
+    }
+
+    public JButton getRegresar() {
+        return regresar;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -277,6 +286,7 @@ public class Resultados extends javax.swing.JFrame {
         // TODO add your handling code here:
         Datos d = new Datos(this.tipo);
         d.setVisible(true);
+        System.out.println("aa");
         this.dispose();
     }//GEN-LAST:event_regresarActionPerformed
 
@@ -286,7 +296,9 @@ public class Resultados extends javax.swing.JFrame {
         i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inicioActionPerformed
-
+    public void remover(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -341,4 +353,8 @@ public class Resultados extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
+
+    public void setRegresar(JButton regresar) {
+        this.regresar = regresar;
+    }
 }
