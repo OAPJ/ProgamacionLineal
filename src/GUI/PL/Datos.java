@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI.PL;
 
+import GUI.PL.Inicial;
+import GUI.PL.Resultados;
 import ProgramacionLineal.Reinstraints;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -25,31 +23,33 @@ public class Datos extends javax.swing.JFrame {
      * Creates new form Datos
      * @param tipo
      */
+    public Datos(){
+        initComponents();
+    }
     public Datos(String tipo) {
         initComponents();
+        iniciar(tipo);
+    }
+    public void iniciar(String tipo){
         ImageIcon escoba =  new ImageIcon("src/imágenes/limpia.png");
         Icon escobaIcon = new ImageIcon(escoba.getImage().getScaledInstance(65, 55, Image.SCALE_DEFAULT));
         limpia.setIcon(escobaIcon);
         ImageIcon flecha =  new ImageIcon("src/imágenes/flecha3.png");
         Icon flechaIcon = new ImageIcon(flecha.getImage().getScaledInstance(70, 60, Image.SCALE_DEFAULT));
         regresar.setIcon(flechaIcon);
-        
-        
         this.setLocationRelativeTo(null);
         this.tipo = tipo;
         if(tipo == "Minimización")
             jLabel4.setText("Minimización");
         restrincciones = new Reinstraints();
-        
     }
-
-    private Datos() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        this.tipo = tipo;
-        restrincciones = new Reinstraints();
-        
-    }
+//    private Datos() {
+//        initComponents();
+//        this.setLocationRelativeTo(null);
+//        this.tipo = tipo;
+//        restrincciones = new Reinstraints();
+//        
+//    }
     
     public JTextArea getReinstraintsTA() {
         return reinstraintsTA;
@@ -162,7 +162,7 @@ public class Datos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_regresarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    public void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Botón de Solución 
         if(!z.getText().equals("") && !reinstraintsTA.getText().equals(""))
             if(tipo == "Maximización")//Para el metodo de maximizacion

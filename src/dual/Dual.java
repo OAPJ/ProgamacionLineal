@@ -6,9 +6,8 @@
 package dual;
 
 
-import GUI.PL.Resultados;
+import GUI.DUAL.DatosD;
 import MetodoSimplex.ValidarSimplex;
-import ProgramacionLineal.Reinstraints;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Dual {
     private final ValidarSimplex original;
-    private Reinstraints dual;
+    private DatosD dual;
     private final ValidarSimplex dualSimplex;
     private String zDual, restricciones;
     private String restriccionesDual[];
@@ -63,16 +62,10 @@ public class Dual {
                 this.variables[i]="x"+(i+1);
             }
             if(this.dualSimplex.validarZ(this.zDual) && this.dualSimplex.validarRestriccionesMax(this.restricciones)){
-                this.dual= new Reinstraints();
-                if(!(this.dual.validarZ(this.zDual)&&this.dual.validarRestrinciones(this.restricciones))){
-                    JOptionPane.showMessageDialog(null, "No se pudo resolver a método gráfico");
-                    return false;
-                }
-                this.dual.obtenerValores();
-                this.dual.evaluarCoordenadas();
-                
-                Resultados r=new Resultados(dual, "Maximización");
-                r.setVisible(true);
+                this.dual= new DatosD("Maximización");
+                this.dual.getZ().setText(this.zDual);
+                this.dual.getReinstraintsTA().setText(this.restricciones);
+                this.dual.getjButton2().doClick();
                 return true;
             }else JOptionPane.showMessageDialog(null, "No se pudo transformar al dual");
         }else if(tipo.equals("Maximización")){
@@ -109,22 +102,23 @@ public class Dual {
                 this.variables[i]="x"+(i+1);
             }
             if(this.dualSimplex.validarZ(this.zDual) && this.dualSimplex.validarRestriccionesMin(this.restricciones)){
-                this.dual= new Reinstraints();
-                if(!this.dual.validarZ(this.zDual)&&this.dual.validarRestrincionesMin(this.restricciones)){
-                    JOptionPane.showMessageDialog(null, "No se pudo resolver a método gráfico");
-                    return false;
-                }
-                this.dual.obtenerValores();
-                this.dual.evaluarCoordenadas();
-//                this.dual.getZ().setText(this.zDual);
-//                this.dual.getReinstraintsTA().setText(this.restricciones);
-//                this.dual.getjButton2().doClick();
-                new Resultados(dual, "Minimización").setVisible(true);
+                this.dual= new DatosD("Minimización");
+                this.dual.getZ().setText(this.zDual);
+                this.dual.getReinstraintsTA().setText(this.restricciones);
+                this.dual.getjButton2().doClick();
                 return true;
             }else JOptionPane.showMessageDialog(null, "No se pudo transformar al dual");
         }
         JOptionPane.showMessageDialog(null, "Introduzca parametros válidos");
         return false;
+    }
+
+    public String getzDual() {
+        return zDual;
+    }
+
+    public String getRestricciones() {
+        return restricciones;
     }
     public boolean recibirParametrosMin(String z, String restricciones){
         return this.original.validarZ(z) && this.original.validarRestriccionesMin(restricciones);

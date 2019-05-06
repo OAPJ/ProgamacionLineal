@@ -27,7 +27,11 @@ public class Graficar {
         series = new XYSeries(id);
         series.add(x,0);
         series.add(0,y);
+        try{
         datos.addSeries(series);
+        }catch(IllegalArgumentException w){
+            
+        }
     }
   
     public void BorrarGrafica() {
