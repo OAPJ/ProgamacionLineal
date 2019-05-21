@@ -5,8 +5,10 @@
  */
 package GUI.PL;
 
+import GUI.DUAL.mover;
 import GUI.PL.Datos;
 import Menu.Menu;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -21,19 +23,34 @@ public class Inicial extends javax.swing.JFrame {
      * Creates new form Inicial
      */
     public Inicial() {
+        setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        Color cBarra = new Color(210, 224, 237);
+        mover mml = new mover(barra);
+        barra.addMouseListener(mml);
+        barra.addMouseMotionListener(mml);
+        barra.setBackground(cBarra);
+        barra.setOpaque(true);
+        
         ImageIcon logo1 =  new ImageIcon("src/imágenes/descarga.png");
         ImageIcon logo2 =  new ImageIcon("src/imágenes/upiiz.png");
         ImageIcon fondoL =  new ImageIcon("src/imágenes/HojaPapel.png");
+        ImageIcon C =  new ImageIcon("src/imágenes/close.png");
+        ImageIcon M =  new ImageIcon("src/imágenes/IntentoMin.png");
+        ImageIcon home =  new ImageIcon("src/imágenes/casita.png");
+        Icon homeIcon = new ImageIcon(home.getImage().getScaledInstance(90, 80, Image.SCALE_DEFAULT));
+        Icon iconC = new ImageIcon(C.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+        Icon iconM = new ImageIcon(M.getImage().getScaledInstance(43, 43, Image.SCALE_DEFAULT));
         Icon hoja = new ImageIcon(fondoL.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
         Icon icono1 = new ImageIcon(logo1.getImage().getScaledInstance(poli.getWidth(), poli.getHeight(), Image.SCALE_DEFAULT));
         Icon icono2 = new ImageIcon(logo2.getImage().getScaledInstance(upiiz.getWidth(), upiiz.getHeight(), Image.SCALE_DEFAULT));
         poli.setIcon(icono1);
         upiiz.setIcon(icono2);
         fondo.setIcon(hoja);
-        ImageIcon home =  new ImageIcon("src/imágenes/casita.png");
-        Icon homeIcon = new ImageIcon(home.getImage().getScaledInstance(90, 80, Image.SCALE_DEFAULT));
+        min.setIcon(iconM);
+        close.setIcon(iconC);
         inicio.setIcon(homeIcon);
     }
 
@@ -46,6 +63,8 @@ public class Inicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        min = new javax.swing.JButton();
+        close = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
         poli = new javax.swing.JLabel();
         upiiz = new javax.swing.JLabel();
@@ -58,33 +77,53 @@ public class Inicial extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         inicio = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
+        barra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Método Gráfico");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        min.setBorderPainted(false);
+        min.setContentAreaFilled(false);
+        min.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minActionPerformed(evt);
+            }
+        });
+        getContentPane().add(min, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, 30));
+
+        close.setContentAreaFilled(false);
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, -1, 30));
+
         titulo.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
         titulo.setText("PARA LA TOMA DE DECISIONES");
-        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, 40));
+        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 40));
 
         poli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/descarga.png"))); // NOI18N
-        getContentPane().add(poli, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 110, 110));
+        getContentPane().add(poli, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 110, 110));
 
         upiiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/upiiz.png"))); // NOI18N
-        getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 130, 120));
+        getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 130, 120));
 
         titulo1.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo1.setText("Programación lineal");
-        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 310, 60));
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 310, 60));
 
         titulo2.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
         titulo2.setText("MÉTODOS CUANTITATIVOS");
-        getContentPane().add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, 40));
+        getContentPane().add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, 40));
 
         jLabel2.setFont(new java.awt.Font("Prestige Elite Std", 1, 21)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Método gráfico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 50));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 200, 50));
 
         jButton2.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         jButton2.setText("Minimización");
@@ -93,7 +132,7 @@ public class Inicial extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, 80));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, 80));
 
         jButton1.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         jButton1.setText("Maximización");
@@ -102,19 +141,23 @@ public class Inicial extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, 80));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, -1, 80));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 252, 300, 0));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 430, 30));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 430, 30));
 
+        inicio.setContentAreaFilled(false);
         inicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicioActionPerformed(evt);
             }
         });
-        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 90, 80));
+        getContentPane().add(inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 90, 80));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/HojaPapel.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 500));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 710, 450));
+
+        barra.setBackground(new java.awt.Color(210, 224, 237));
+        getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,6 +182,16 @@ public class Inicial extends javax.swing.JFrame {
         i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inicioActionPerformed
+
+    private void minActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minActionPerformed
+        //MINIMIZAR
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_minActionPerformed
+
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        //CLOSE
+        System.exit(0);
+    }//GEN-LAST:event_closeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +219,7 @@ public class Inicial extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -176,6 +230,8 @@ public class Inicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel barra;
+    private javax.swing.JButton close;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton inicio;
     private javax.swing.JButton jButton1;
@@ -183,6 +239,7 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton min;
     private javax.swing.JLabel poli;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;

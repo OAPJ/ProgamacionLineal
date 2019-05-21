@@ -19,8 +19,8 @@ import javax.swing.text.StyledDocument;
  */
 public class Manual extends javax.swing.JFrame {
     private int cont = 0;
-    private String[] instrucciones =  new String[9];
-    private Icon[] imagenes = new Icon[9];
+    private String[] instrucciones =  new String[13];
+    private Icon[] imagenes = new Icon[13];
     /**
      * Creates new form Manual
      */
@@ -36,7 +36,8 @@ public class Manual extends javax.swing.JFrame {
                                 "siempre estará disponible en tu pantalla principal para que lo puedas consultar cuando quieras c;";
         this.instrucciones[1] = "\n \n Para empezar, debes seleccionar el método por el cual deseas maximizar o minizar tu función objetivo.";
         this.instrucciones[2] = "NOTA: Recuerda que el método gráfico únicamente es posible aplicarlo para problemáticas que contengan\n"+
-                                "             dos variables.";
+                                "             dos variables. Si tienes problemas primarios con 3 variables de decisión lo puedes reducir y"+
+                                " resolver\n             de mejor manera con el método dual.";
         this.instrucciones[3] = "\n  == MÉTODO GRÁFICO == \n \n¿Qué deseas maximizar o minimizar tu función objetivo?";
         this.instrucciones[4] = "\nEs necesario llenar todos los campos; en pantalla se muestra un ejemplo de cómo introducir \n" +
                                 "tanto tu función objetivo como las restricciones.\n"+
@@ -44,7 +45,7 @@ public class Manual extends javax.swing.JFrame {
                                 "que al presionarlo únicamente tendrás que sustiur los valores de tu función objetivo y  de tus\n"+
                                 "restricciones en la funciones del ejemplo, así como añadir o eliminar las restrcciones que necesites.";
         this.instrucciones[5] = "NOTA: Recuerda acompañar tus restricciones con el signo '=>' para Minimización y '<=' para Maximización.";
-        this.instrucciones[6] = "\n \n == VENTANA DE RESULTADOS. ==";
+        this.instrucciones[6] = "\n \n == VENTANA DE RESULTADOS DEL MÉTODO GRÁFICO. ==";
         this.instrucciones[7] = "== MÉTODO SIMPLEX == \n"+
                                 "Es necesario llenar todos los campos; en pantalla se muestra un ejemplo de cómo introducir\n" +
                                 "tanto tu función objetivo como las restricciones.\n" +
@@ -53,6 +54,16 @@ public class Manual extends javax.swing.JFrame {
                                 "restricciones en la funciones del ejemplo, así como añadir o eliminar las restrcciones que necesites.\n";
         this.instrucciones[8] = "NOTA: La presente aplicación únicamente soluciona problemas de máximización por método Simplex.\n"+
                                 "            Tampoco olvides que es necesario acompañar tus restricciones con el signo de '<='.";
+        this.instrucciones[9] = "== MÉTODO DUAL == \n \n¿Qué deseas maximizar o minimizar tu función objetivo? \n"+
+                                "Recuerda que el método dual te permite resolver problemas de minimización por medio de maximización o"+
+                                "maximización por medio de minización siempre y cuando exista una solución óptima factible.";
+        this.instrucciones[10] = "\nEs necesario llenar todos los campos; en pantalla se muestra un ejemplo de cómo introducir \n" +
+                                "tanto tu función objetivo como las restricciones.\n"+
+                                "Pero no te preocupes, de igual manera en la pantalla se encontrará el botón de ejemplo con el\n" +
+                                "que al presionarlo únicamente tendrás que sustiur los valores de tu función objetivo y  de tus\n"+
+                                "restricciones en la funciones del ejemplo, así como añadir o eliminar las restrcciones que necesites.";
+        this.instrucciones[11] = "NOTA: Recuerda acompañar tus restricciones con el signo '=>' para Minimización y '<=' para Maximización.";
+        this.instrucciones[12] = "\n \n == VENTANA DUAL DE RESULTADOS. ==";
 
         ImageIcon IMG1 = new ImageIcon("src/imágenes/IMG_1.png");
         ImageIcon IMG2 =  new ImageIcon("src/imágenes/IMG_1.1.png");
@@ -60,6 +71,9 @@ public class Manual extends javax.swing.JFrame {
         ImageIcon IMG4 =  new ImageIcon("src/imágenes/IMG_MG.png");
         ImageIcon IMG5 =  new ImageIcon("src/imágenes/IMG_R.png");
         ImageIcon IMG6 =  new ImageIcon("src/imágenes/IMG_MS.png");
+        ImageIcon IMG7 =  new ImageIcon("src/imágenes/IMG_MD.png");
+        ImageIcon IMG8 =  new ImageIcon("src/imágenes/IMG_MDD.png");
+        ImageIcon IMG9 =  new ImageIcon("src/imágenes/IMG_MD_R.png");
         this.imagenes[0] =  new ImageIcon(IMG1.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
         this.imagenes[1] =  new ImageIcon(IMG2.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
         this.imagenes[2] =  new ImageIcon(IMG2.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
@@ -69,6 +83,10 @@ public class Manual extends javax.swing.JFrame {
         this.imagenes[6] =  new ImageIcon(IMG5.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
         this.imagenes[7] =  new ImageIcon(IMG6.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
         this.imagenes[8] =  new ImageIcon(IMG6.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
+        this.imagenes[9] =  new ImageIcon(IMG7.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
+        this.imagenes[10] =  new ImageIcon(IMG8.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
+        this.imagenes[11] =  new ImageIcon(IMG8.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
+        this.imagenes[12] =  new ImageIcon(IMG9.getImage().getScaledInstance(IMG.getWidth(), IMG.getHeight(), BufferedImage.TYPE_INT_RGB));
     }
     public Manual() {
         //VENTANA
@@ -118,7 +136,6 @@ public class Manual extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 255));
-        setPreferredSize(new java.awt.Dimension(0, 761));
         getContentPane().setLayout(null);
 
         Back.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -193,7 +210,7 @@ public class Manual extends javax.swing.JFrame {
         //BTN SIGUIENTE
         if(cont >= 0 && cont < instrucciones.length-1){
             cont++;
-            if(cont == 1 || cont == 4 || cont == 7){
+            if(cont == 1 || cont == 4 || cont == 7 || cont == 10){
                 cont++;
                 BOTTOM.setText(instrucciones[cont]);
                 TOP.setText(instrucciones[cont-1]);
@@ -213,7 +230,7 @@ public class Manual extends javax.swing.JFrame {
                 
             }else{
                 cont--;
-                if(cont == 2 || cont == 5 || cont == 8){
+                if(cont == 2 || cont == 5 || cont == 8 || cont == 11){
                     cont--;
                     TOP.setText(instrucciones[cont]);
                     IMG.setIcon(imagenes[cont]);
@@ -259,6 +276,8 @@ public class Manual extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Manual.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

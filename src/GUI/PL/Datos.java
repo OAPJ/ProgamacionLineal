@@ -1,9 +1,10 @@
 
 package GUI.PL;
 
-import GUI.PL.Inicial;
+import GUI.DUAL.mover;
 import GUI.PL.Resultados;
 import ProgramacionLineal.Reinstraints;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -27,7 +28,23 @@ public class Datos extends javax.swing.JFrame {
         initComponents();
     }
     public Datos(String tipo) {
+        setUndecorated(true);
         initComponents();
+        
+        Color cBarra = new Color(210, 224, 237);
+        mover mml = new mover(barra);
+        barra.addMouseListener(mml);
+        barra.addMouseMotionListener(mml);
+        barra.setBackground(cBarra);
+        barra.setOpaque(true);
+        
+        ImageIcon C =  new ImageIcon("src/imágenes/close.png");
+        ImageIcon M =  new ImageIcon("src/imágenes/IntentoMin.png");
+        Icon iconC = new ImageIcon(C.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+        Icon iconM = new ImageIcon(M.getImage().getScaledInstance(43, 43, Image.SCALE_DEFAULT));
+        min.setIcon(iconM);
+        close.setIcon(iconC);
+        
         iniciar(tipo);
     }
     public void iniciar(String tipo){
@@ -68,6 +85,8 @@ public class Datos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        close = new javax.swing.JButton();
+        min = new javax.swing.JButton();
         z = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         reinstraintsTA = new javax.swing.JTextArea();
@@ -80,47 +99,66 @@ public class Datos extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         limpia = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
+        barra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Método Gráfico");
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        close.setContentAreaFilled(false);
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, -1, 30));
+
+        min.setBorderPainted(false);
+        min.setContentAreaFilled(false);
+        min.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minActionPerformed(evt);
+            }
+        });
+        getContentPane().add(min, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, -1, 30));
+
         z.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(z, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 170, -1));
+        getContentPane().add(z, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 170, -1));
 
         reinstraintsTA.setColumns(20);
         reinstraintsTA.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         reinstraintsTA.setRows(5);
         jScrollPane1.setViewportView(reinstraintsTA);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 333, 149));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 333, 149));
 
         jLabel2.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
         jLabel2.setText("Método gráfico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 40));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Z = ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 62, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 62, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("Restrincciones");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Prestige Elite Std", 0, 22)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 0, 51));
         jLabel4.setText("Maximización");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 40));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, 40));
 
         regresar.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/flecha3.png"))); // NOI18N
+        regresar.setContentAreaFilled(false);
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarActionPerformed(evt);
             }
         });
-        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 90, 60));
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 90, 60));
 
         jButton2.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         jButton2.setText("Solución");
@@ -129,7 +167,7 @@ public class Datos extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, 50));
 
         jButton3.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         jButton3.setText("Ejemplo");
@@ -138,19 +176,23 @@ public class Datos extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 113, 50));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 113, 50));
 
         limpia.setFont(new java.awt.Font("Prestige Elite Std", 0, 16)); // NOI18N
         limpia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/limpia.png"))); // NOI18N
+        limpia.setContentAreaFilled(false);
         limpia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiaActionPerformed(evt);
             }
         });
-        getContentPane().add(limpia, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 80, 70));
+        getContentPane().add(limpia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 80, 70));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/me.jpg"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 510));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 370, 480));
+
+        barra.setBackground(new java.awt.Color(210, 224, 237));
+        getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,6 +272,16 @@ public class Datos extends javax.swing.JFrame {
         reinstraintsTA.setText("");
     }//GEN-LAST:event_limpiaActionPerformed
 
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        //CLOSE
+        System.exit(0);
+    }//GEN-LAST:event_closeActionPerformed
+
+    private void minActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minActionPerformed
+        //MINIMIZAR
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_minActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -256,6 +308,7 @@ public class Datos extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Datos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -266,6 +319,8 @@ public class Datos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel barra;
+    private javax.swing.JButton close;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -275,6 +330,7 @@ public class Datos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton limpia;
+    private javax.swing.JButton min;
     private javax.swing.JButton regresar;
     private javax.swing.JTextArea reinstraintsTA;
     private javax.swing.JTextField z;

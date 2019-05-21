@@ -6,6 +6,10 @@
 package GUI.DUAL;
 
 import dual.Dual;
+import java.awt.Color;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,10 +23,38 @@ public class FrameDual extends javax.swing.JFrame {
      * @param tipo
      */
     public FrameDual(String tipo) {
+        setUndecorated(true);
         initComponents();
         this.tipo.setText(tipo);
         this.dual= new Dual();
+        this.setSize(500, 520);
+        this.setLocationRelativeTo(null);
+        
+        Color cBarra = new Color(210, 224, 237);
+        mover mml = new mover(barra);
+        barra.addMouseListener(mml);
+        barra.addMouseMotionListener(mml);
+        barra.setBackground(cBarra);
+        barra.setOpaque(true);
+        ImageIcon C =  new ImageIcon("src/imágenes/close.png");
+        Icon iconC = new ImageIcon(C.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+        close.setIcon(iconC);
+        ImageIcon M =  new ImageIcon("src/imágenes/IntentoMin.png");
+        Icon iconM = new ImageIcon(M.getImage().getScaledInstance(43, 43, Image.SCALE_DEFAULT));
+        min.setIcon(iconM);
+        
+        ImageIcon escoba =  new ImageIcon("src/imágenes/limpia.png");
+        Icon escobaIcon = new ImageIcon(escoba.getImage().getScaledInstance(65, 55, Image.SCALE_DEFAULT));
+        limpia.setIcon(escobaIcon);
+        ImageIcon flecha =  new ImageIcon("src/imágenes/flecha3.png");
+        Icon flechaIcon = new ImageIcon(flecha.getImage().getScaledInstance(70, 60, Image.SCALE_DEFAULT));
+        regresar.setIcon(flechaIcon);
+        
+        ImageIcon F =  new ImageIcon("src/imágenes/me.jpg");
+        Icon iconF = new ImageIcon(F.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
+        fondo.setIcon(iconF);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,159 +65,206 @@ public class FrameDual extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        min = new javax.swing.JButton();
+        close = new javax.swing.JButton();
         z = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         restricciones = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        tipo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        ejemplo = new javax.swing.JButton();
+        solucion = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
+        limpia = new javax.swing.JButton();
+        c = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         resultados = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        tipo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        barra = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        min.setBorderPainted(false);
+        min.setContentAreaFilled(false);
+        min.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minActionPerformed(evt);
+            }
+        });
+        getContentPane().add(min, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 0, 40, 30));
+
+        close.setContentAreaFilled(false);
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 40, 30));
+
+        z.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        z.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zActionPerformed(evt);
+            }
+        });
+        getContentPane().add(z, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 150, 30));
 
         restricciones.setColumns(20);
+        restricciones.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         restricciones.setRows(5);
+        restricciones.setPreferredSize(new java.awt.Dimension(160, 100));
         jScrollPane1.setViewportView(restricciones);
 
-        jButton1.setText("Ejemplo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, 170));
+
+        ejemplo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        ejemplo.setText("Ejemplo");
+        ejemplo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ejemploActionPerformed(evt);
             }
         });
+        getContentPane().add(ejemplo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 110, 40));
 
-        jButton2.setText("Solucion");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        solucion.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        solucion.setText("Solución");
+        solucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                solucionActionPerformed(evt);
             }
         });
+        getContentPane().add(solucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 110, 40));
 
-        jButton3.setText("Regresar");
-
-        jButton4.setText("Limpiar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        regresar.setContentAreaFilled(false);
+        regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                regresarActionPerformed(evt);
             }
         });
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 80, 60));
 
-        jLabel1.setText("Z=");
+        limpia.setContentAreaFilled(false);
+        limpia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(limpia, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 70, 60));
 
-        jLabel2.setText("Restricciones:");
+        c.setEditable(false);
+        c.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cActionPerformed(evt);
+            }
+        });
+        getContentPane().add(c, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 150, 30));
 
-        tipo.setText("Tipo");
-
-        jLabel3.setText("Resultados");
-
+        resultados.setEditable(false);
         resultados.setColumns(20);
+        resultados.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         resultados.setRows(5);
+        resultados.setPreferredSize(new java.awt.Dimension(160, 100));
         jScrollPane3.setViewportView(resultados);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(z, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tipo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)))))
-                .addGap(90, 90, 90))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addGap(76, 76, 76))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipo)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(z, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap())
-        );
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 180, 170));
+
+        jLabel4.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
+        jLabel4.setText("Método dual.");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 40));
+
+        tipo.setFont(new java.awt.Font("Prestige Elite Std", 0, 22)); // NOI18N
+        tipo.setForeground(new java.awt.Color(102, 0, 51));
+        tipo.setText("Maximización");
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, 40));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 160, 10));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel5.setText("Z = ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 40, 30));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel6.setText("C =");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 40, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setText("Restrincciones");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 20, 170));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 280, 10));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 160, 10));
+
+        barra.setBackground(new java.awt.Color(210, 224, 237));
+        getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 30));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/me.jpg"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 500, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void limpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaActionPerformed
         this.restricciones.setText("");
         this.z.setText("");
-    }//GEN-LAST:event_jButton4ActionPerformed
+        this.c.setText("");
+        this.resultados.setText("");
+    }//GEN-LAST:event_limpiaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ejemploActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploActionPerformed
         if(!this.tipo.getText().equals("Maximización"))
             this.restricciones.setText("2x+4y+10w=> 24\n5x+y+5w=> 8");else
             this.restricciones.setText("2x+4y+10w<= 24\n5x+y+5w<= 8");
         this.z.setText("40x+20y+60w");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ejemploActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(!this.dual.crearDual(tipo.getText(), z.getText(), restricciones.getText()))
-            JOptionPane.showMessageDialog(null, "Ingrese los parametros correctos");
-        else{
-            this.resultados.setText(this.dual.getRestricciones());
-            this.jTextField1.setText(this.dual.getzDual());
+    private void solucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solucionActionPerformed
+        if(z.getText().isEmpty()|| restricciones.getText().isEmpty()){     
+            JOptionPane.showMessageDialog(null, "Complete todos los campos, por favor"); 
+        } else{
+            if(!this.dual.crearDual(tipo.getText(), z.getText(), restricciones.getText()))
+                JOptionPane.showMessageDialog(null, "Ingrese los parametros correctos");
+            else{
+                this.resultados.setText(this.dual.getRestricciones());
+                this.c.setText(this.dual.getzDual());
+            }   
         }
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_solucionActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        //INICIO DUAL
+        MenuDual i = new MenuDual();
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
+
+    private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cActionPerformed
+
+    private void zActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_zActionPerformed
+
+    private void minActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minActionPerformed
+        //MINIMIZAR
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_minActionPerformed
+
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        //CLOSE
+        System.exit(0);
+    }//GEN-LAST:event_closeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,18 +303,27 @@ public class FrameDual extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel barra;
+    private javax.swing.JTextField c;
+    private javax.swing.JButton close;
+    private javax.swing.JButton ejemplo;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JButton limpia;
+    private javax.swing.JButton min;
+    private javax.swing.JButton regresar;
     private javax.swing.JTextArea restricciones;
     private javax.swing.JTextArea resultados;
+    private javax.swing.JButton solucion;
     private javax.swing.JLabel tipo;
     private javax.swing.JTextField z;
     // End of variables declaration//GEN-END:variables

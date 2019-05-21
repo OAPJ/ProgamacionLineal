@@ -6,10 +6,14 @@
 package Menu;
 
 
+import GUI.DUAL.MenuDual;
+import GUI.DUAL.mover;
 import GUI.MS.Simplex;
 import GUI.PL.Inicial;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -20,24 +24,42 @@ import javax.swing.ImageIcon;
 public class Menu extends javax.swing.JFrame {
     private Simplex ms;
     private Inicial mg;
+    private MenuDual md;
     private Manual m;
+    int x,y; 
 
     /**
      * Creates new form Menu
      */
     public Menu() {
-        initComponents();
+        setUndecorated(true);
+        initComponents(); 
         this.setLocationRelativeTo(null);
-        this.setSize(780, 530);
+        this.setSize(780, 600);
         this.getContentPane().setBackground(Color.WHITE);
         jPanel1.setBackground(Color.WHITE);
+        
+        Color cBarra = new Color(210, 224, 237);
+        mover mml = new mover(barra);
+        barra.addMouseListener(mml);
+        barra.addMouseMotionListener(mml);
+        barra.setBackground(cBarra);
+        barra.setOpaque(true);
+        barra.setSize(780, 20);
+        
         ImageIcon logo1 =  new ImageIcon("src/imágenes/descarga.png");
         ImageIcon logo2 =  new ImageIcon("src/imágenes/upiiz.png");
         ImageIcon manualIMG =  new ImageIcon("src/imágenes/Help-icon.png");
+        ImageIcon C =  new ImageIcon("src/imágenes/close.png");
+        ImageIcon M =  new ImageIcon("src/imágenes/IntentoMin.png");
+        Icon iconC = new ImageIcon(C.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+        Icon iconM = new ImageIcon(M.getImage().getScaledInstance(43, 43, Image.SCALE_DEFAULT));
         Icon mIcon = new ImageIcon(manualIMG.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
         Icon icono1 = new ImageIcon(logo1.getImage().getScaledInstance(poli.getWidth(), poli.getHeight(), Image.SCALE_DEFAULT));
         Icon icono2 = new ImageIcon(logo2.getImage().getScaledInstance(upiiz.getWidth(), upiiz.getHeight(), Image.SCALE_DEFAULT));
         poli.setIcon(icono1);
+        min.setIcon(iconM);
+        close.setIcon(iconC);
         upiiz.setIcon(icono2);
         manual.setIcon(mIcon);
     }
@@ -51,6 +73,9 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        close = new javax.swing.JButton();
+        min = new javax.swing.JButton();
+        barra = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         poli = new javax.swing.JLabel();
         upiiz = new javax.swing.JLabel();
@@ -64,40 +89,61 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         manual = new javax.swing.JButton();
+        MG1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Programación Lineal");
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        close.setContentAreaFilled(false);
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, 30, 30));
+
+        min.setBorderPainted(false);
+        min.setContentAreaFilled(false);
+        min.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minActionPerformed(evt);
+            }
+        });
+        getContentPane().add(min, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 30));
+
+        barra.setBackground(new java.awt.Color(255, 51, 51));
+        getContentPane().add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 30));
+
         titulo.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
         titulo.setText("PARA LA TOMA DE DECISIONES");
-        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, 40));
+        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, -1, 40));
 
         poli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/descarga.png"))); // NOI18N
-        getContentPane().add(poli, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 110, 110));
+        getContentPane().add(poli, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 110, 110));
 
         upiiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imágenes/upiiz.png"))); // NOI18N
-        getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 130, 120));
+        getContentPane().add(upiiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 130, 120));
 
         titulo1.setFont(new java.awt.Font("Prestige Elite Std", 0, 26)); // NOI18N
         titulo1.setForeground(new java.awt.Color(51, 0, 0));
         titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo1.setText("Programación lineal");
-        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 310, 60));
+        getContentPane().add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 310, 60));
 
         titulo2.setFont(new java.awt.Font("Prestige Elite Std", 0, 24)); // NOI18N
         titulo2.setText("MÉTODOS CUANTITATIVOS");
-        getContentPane().add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, -1, 40));
+        getContentPane().add(titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, 40));
 
         MG.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        MG.setText("MÉTODO GRÁFICO");
+        MG.setText("MÉTODO DUAL");
         MG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MGActionPerformed(evt);
             }
         });
-        getContentPane().add(MG, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, -1, 80));
+        getContentPane().add(MG, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, 80));
 
         MS.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         MS.setText("MÉTODO SIMPLEX");
@@ -106,10 +152,10 @@ public class Menu extends javax.swing.JFrame {
                 MSActionPerformed(evt);
             }
         });
-        getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, 80));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 430, 30));
+        getContentPane().add(MS, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, 80));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 430, 30));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 0))), "Elaborado por:", 0, 0, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 0, 0))), "Elaborado por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(51, 0, 0))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Juan Antonio Ovalle Patiño");
@@ -144,7 +190,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 410, 130));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 410, 130));
 
         manual.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         manual.setText("  Manual de Usuario");
@@ -153,15 +199,24 @@ public class Menu extends javax.swing.JFrame {
                 manualActionPerformed(evt);
             }
         });
-        getContentPane().add(manual, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 250, 80));
+        getContentPane().add(manual, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 260, 80));
+
+        MG1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        MG1.setText("MÉTODO GRÁFICO");
+        MG1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MG1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, -1, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void MGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MGActionPerformed
-       //Método gráfico
-        mg = new Inicial();
-        mg.setVisible(true);
+       //Método dual
+        md = new MenuDual();
+        md.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MGActionPerformed
 
@@ -178,6 +233,23 @@ public class Menu extends javax.swing.JFrame {
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_manualActionPerformed
+
+    private void MG1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MG1ActionPerformed
+        //Método Simplex
+        mg = new Inicial();
+        mg.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MG1ActionPerformed
+
+    private void minActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minActionPerformed
+        //MINIMIZAR
+        this.setExtendedState(ICONIFIED); 
+    }//GEN-LAST:event_minActionPerformed
+
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        //CLOSE
+        System.exit(0); 
+    }//GEN-LAST:event_closeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +277,7 @@ public class Menu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -216,13 +289,17 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MG;
+    private javax.swing.JButton MG1;
     private javax.swing.JButton MS;
+    private javax.swing.JLabel barra;
+    private javax.swing.JButton close;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton manual;
+    private javax.swing.JButton min;
     private javax.swing.JLabel poli;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
