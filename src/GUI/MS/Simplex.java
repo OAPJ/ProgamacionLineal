@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI.MS;
 
 import GUI.DUAL.mover;
@@ -13,7 +8,11 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 
 
@@ -282,6 +281,10 @@ public class Simplex extends javax.swing.JFrame {
         this.z.setText("3x + 4y");
     }//GEN-LAST:event_ExampleActionPerformed
 
+    public JButton getRegresar() {
+        return regresar;
+    }
+
     private void limpiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiaActionPerformed
         //LIMPIAR
         z.setText("");
@@ -298,6 +301,14 @@ public class Simplex extends javax.swing.JFrame {
         falso.setSelected(true);
         this.repaint();
     }//GEN-LAST:event_limpiaActionPerformed
+
+    public JRadioButton getLasDos() {
+        return lasDos;
+    }
+
+    public JButton getResolve() {
+        return Resolve;
+    }
 
     private void ResolveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResolveActionPerformed
         // TODO add your handling code here:
@@ -331,13 +342,13 @@ public class Simplex extends javax.swing.JFrame {
         this.process.setText("           TABLA FINAL           \n"+matriz.variables()+"\n"+matriz.mostrarMatriz());
     }//GEN-LAST:event_finalTActionPerformed
 
-    private void lasDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lasDosActionPerformed
+    public void lasDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lasDosActionPerformed
         // TODO add your handling code here:
         this.process.setText("           TABLA INCIAL           \n"+matriz.variables()+"\n"+matrizInicial
         +"\n\n           TABLA FINAL           \n"+matriz.variables()+"\n"+matriz.mostrarMatriz());
     }//GEN-LAST:event_lasDosActionPerformed
 
-    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+    public void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         // TODO add your handling code here:
         Menu d = new Menu();
         d.setVisible(true);
@@ -353,6 +364,14 @@ public class Simplex extends javax.swing.JFrame {
         //CLOSE
         System.exit(0);
     }//GEN-LAST:event_closeActionPerformed
+
+    public JTextArea getReinstraintsTA() {
+        return reinstraintsTA;
+    }
+
+    public JTextField getZ() {
+        return z;
+    }
 
     /**
      * @param args the command line arguments

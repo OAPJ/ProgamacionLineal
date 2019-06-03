@@ -6,6 +6,7 @@
 package GUI.DUAL;
 
 import dual.Dual;
+import dual.SimplexExtends;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -231,11 +232,23 @@ public class FrameDual extends javax.swing.JFrame {
         if(z.getText().isEmpty()|| restricciones.getText().isEmpty()){     
             JOptionPane.showMessageDialog(null, "Complete todos los campos, por favor"); 
         } else{
-            if(!this.dual.crearDual(tipo.getText(), z.getText(), restricciones.getText()))
+            if(!this.dual.crearDual(tipo.getText(), z.getText(), restricciones.getText())){
                 JOptionPane.showMessageDialog(null, "Ingrese los parametros correctos");
+            }
             else{
                 this.resultados.setText(this.dual.getRestricciones());
                 this.c.setText(this.dual.getzDual());
+                if(this.tipo.getText().equals("Minimización")){
+                    if(JOptionPane.showConfirmDialog(null, "¿Quiere resolver mediante Simplex?")==0){
+                        SimplexExtends sp= new SimplexExtends();
+                        sp.setVisible(true);
+                        sp.getZ().setText(c.getText());
+                        sp.getReinstraintsTA().setText(resultados.getText());
+                        sp.getResolve().doClick();
+                        sp.getLasDos().setSelected(true);
+                        sp.lasDosActionPerformed(null);
+                    }
+                }
             }   
         }
         
